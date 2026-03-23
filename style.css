@@ -1,0 +1,47 @@
+.navbar{
+    display: flex;
+    background-color: bisque;
+    justify-content: space-between;
+}
+.hero{
+    background-color: rgb(201, 124, 30);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.titulo1{
+    font-size: 32px;
+}
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    gap: 30px;
+    background-color: rgb(177, 177, 135);
+}
+.main-product-grid{
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+    gap: 30px;
+    background-color: rgb(177, 177, 135);
+}
+
+.product-card{
+    padding: 30px;
+    margin: 30px;
+    display: grid;
+    grid-template-rows:repeat(3, minmax(0, 1fr));
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    width: 600px;
+    height: 600px;
+    background-color: aquamarine;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto;
+    gap: 30px;
+    background-color: rgb(104, 104, 104);
+}
