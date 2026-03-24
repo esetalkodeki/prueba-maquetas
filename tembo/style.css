@@ -1,0 +1,42 @@
+.container{
+    max-width: 1024px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+.header{
+}
+
+.hero{
+    background-image: url("./assets/hderlis.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: aquamarine;
+    width: 1024px;
+    height: 320px;
+}
+
+.navbar{
+    display: flex;    
+}
+
+.navbar-links{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    list-style: none;
+}
+
+.navbar-link{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 5px solid transparent;
+}
+
+.navbar-link:hover{
+    color: gray;
+    border-bottom: 5px solid black;
+}
+

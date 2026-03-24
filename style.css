@@ -16,15 +16,19 @@
 }
 .main-grid {
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 11fr; /*  12 fracciones */
     gap: 30px;
-    background-color: rgb(177, 177, 135);
+    background-color: rgb(1, 177, 135);
 }
 .main-product-grid{
     display: grid;
     grid-template-rows: 1fr 6fr;
     gap: 30px;
     background-color: rgb(177, 177, 135);
+}
+
+.products-section{
+    background-color: aquamarine;
 }
 
 .product-card{
@@ -34,9 +38,9 @@
     grid-template-rows:repeat(3, minmax(0, 1fr));
     grid-template-columns:repeat(3, minmax(0, 1fr));
     gap: 30px;
-    width: 600px;
+    width: 100%;
     height: 600px;
-    background-color: aquamarine;
+    background-color: antiquewhite;
 }
 .footer-grid {
     display: grid;
