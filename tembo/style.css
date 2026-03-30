@@ -1,7 +1,11 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .container{
     max-width: 1024px;
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: 1rem; /*Para siempre exista un padding minimo*/
 }
 
 .header{
@@ -38,5 +42,204 @@
 .navbar-link:hover{
     color: gray;
     border-bottom: 5px solid black;
+}
+
+.main-section {
+    
+    display: flex;
+}
+
+.aside{
+    background-color: #cecece;
+    padding: 15px;
+    max-width: 290px;
+}
+
+.buscador {
+    display: flex;
+}
+
+.input-buscador{
+    width: 100%;
+}
+
+.aside-title{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.aside-title-divider{
+    background-color: black;
+    width: 20px;
+    height: 5px;
+}
+
+/* Selector de rango */
+
+.price-filter {
+    margin-top: 16px;
+}
+
+.price-values {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    font-size: smaller;
+}
+
+.price-value {
+    font-weight: 600;
+}
+
+.price-sep {
+    opacity: 0.7;
+}
+
+.range-slider{
+  position: relative;
+  height: 28px;
+
+  --track-h: 6px;
+  --thumb: 14px;
+
+  --track: #e5e7eb;   /* gris claro */
+  --active: #233acf;  /* dorado */
+}
+
+.range-track{
+  position:absolute;
+  left:0;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  height:var(--track-h);
+  border-radius:999px;
+
+  background: linear-gradient(
+    to right,
+    var(--track) 0%,
+    var(--track) var(--min),
+    var(--active) var(--min),
+    var(--active) var(--max),
+    var(--track) var(--max),
+    var(--track) 100%
+  );
+}
+
+.range-slider input[type="range"]{
+  position:absolute;
+  inset:0;
+  width:100%;
+  background:transparent;
+  -webkit-appearance:none;
+  appearance:none;
+  pointer-events:none;
+  margin:0;
+}
+
+.range-slider input[type="range"]::-webkit-slider-runnable-track{
+  height:var(--track-h);
+  background:transparent;
+}
+
+.range-slider input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:var(--thumb);
+  height:var(--thumb);
+  border-radius:999px;
+  background: var(--active);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  pointer-events:auto;
+  margin-top: calc((var(--track-h) - var(--thumb)) / 2);
+}
+
+/* Firefox */
+.range-slider input[type="range"]::-moz-range-track{ height:var(--track-h); background:transparent; }
+.range-slider input[type="range"]::-moz-range-thumb{
+  width:var(--thumb);
+  height:var(--thumb);
+  border-radius:999px;
+  background: var(--active);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  pointer-events:auto;
+}
+
+.primary-button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #233acf;
+    color: #fff;
+    font-size:large;
+    border: none;
+    border-bottom: 5px solid transparent;
+    padding: 15px 30px 15px 30px;
+}
+
+.primary-button:hover {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #233acf;
+    color: #fff;
+    font-size:large;
+    border: none;
+    border-bottom: 5px solid #111b61;
+    padding: 15px 30px 15px 30px;
+}
+
+.categories-list{
+    list-style: none;
+    padding: 0px
+}
+
+.categories-list>li{
+    padding: 15px 0px 15px 0px;
+}
+
+.categories-list>li:not(:last-child){
+    
+    border-bottom: 1px solid #767676;
+}
+
+.categories-list>li>a{
+    color: black;
+    text-decoration: none;
+}
+
+.categories-list>li>a:hover{
+    color: #767676;
+    text-decoration: none;
+}
+
+.feature-product{
+    display: flex;
+    padding: 15px 0px 15px 0px;
+}
+
+.feature-product:not(:last-child){
+    border-bottom: 1px solid #767676;
+}
+
+.product-description{
+    width: 100%;
+}
+
+.product-price{
+    color: #233acf;
+    font-weight: bold;
+}
+
+.product-price-with-discount{
+    color: #767676;
+    text-decoration: line-through;
+}
+
+.product-img{
+    background-color: #fff;
+    border: 1px solid #767676;
+    height: 50px;
+    width: 50px;
 }
 

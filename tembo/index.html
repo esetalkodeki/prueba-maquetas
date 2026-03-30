@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
     <title>Tembo</title>
 </head>
 <body>
@@ -26,12 +28,140 @@
           <div class="hero"></div>  
         </div>
     </header>
-    <main class="container">
-      <aside></aside>
+    <main class="container main-section">
+      <aside class="aside">
+        <div class="buscador">
+          <input class="input-buscador" type="text">
+          <i data-lucide="search"></i>
+        </div>
+        <div>
+          <h2 class="aside-title">Filtrar por precio</h2>
+          <div class="aside-title-divider"></div>
+          <div class="price-filter">
+            <div class="range-slider" id="rangeSlider" style="--min:0%; --max:100%;">
+              <!-- Mínimo -->
+              <input
+                id="min-range"
+                type="range"
+                min="0"
+                max="1000"
+                step="10"
+                value="200"
+                aria-label="Precio mínimo"
+              />
+              <!-- Máximo -->
+              <input
+                id="max-range"
+                type="range"
+                min="0"
+                max="1000"
+                step="10"
+                value="800"
+                aria-label="Precio máximo"
+              />
+              <div class="range-track" aria-hidden="true"></div>
+            </div>
+            <div class="price-values">
+              <span>Precio: </span>
+              <span id="price-min" class="price-value">0 Gs.</span>
+              <span class="price-sep">-</span>
+              <span id="price-max" class="price-value">1000 Gs</span>
+              <button class="primary-button">Filtrar</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="aside-title">Categorias</h2>
+          <div class="aside-title-divider"></div>
+          <ul class="categories-list">
+            <li><a href="#">Armas blancas (9)</a></li>
+            <li><a href="#">Rifles de asalto (14)</a></li>
+            <li><a href="#">Accesorios (26)</a></li>
+            <li><a href="#">Francotiradores (5)</a></li>
+            <li><a href="#">Granadas (3)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="aside-title">Productos destacados</h2>
+          <div class="aside-title-divider"></div>
+          <div class="feature-product">
+            <div class="product-description">
+              <div>
+                Pistola Banana
+              </div>
+              <span class="product-price-with-discount">10.000Gs</span>
+              <span class="product-price">20.000Gs</span>
+            </div>
+            <img class="product-img" src="/tembo/assets/productos/producto-1.png" alt="Pistola Banana">
+          </div>
+          <div class="feature-product">
+            <div class="product-description">
+              <div>
+                Holy Granade
+              </div>
+              <span class="product-price">20.000Gs</span>
+            </div>
+            <img class="product-img" src="/tembo/assets/productos/producto-1.png" alt="Pistola Banana">
+          </div>
+          <div class="feature-product">
+            <div class="product-description">
+              <div>
+                Dildo XL
+              </div>
+              <span class="product-price-with-discount">90.000Gs</span>
+              <span class="product-price">60.000Gs</span>
+            </div>
+            <img class="product-img" src="/tembo/assets/productos/producto-1.png" alt="Pistola Banana">
+          </div>
+        </div>
+      </aside>
       <section>main</section>
     </main>
     
 
+  <script>
+    lucide.createIcons();
 
+    const minRange = document.getElementById('min-range');
+    const maxRange = document.getElementById('max-range');
+    const priceMin = document.getElementById('price-min');
+    const priceMax = document.getElementById('price-max');
+    const rangeSlider = document.getElementById('rangeSlider');
+    const MIN = Number(minRange.min);
+    const MAX = Number(minRange.max);
+    const STEP = Number(minRange.step);
+    function formatPrice(v) {
+      return `${v} Gs.`;
+    }
+    function updateUI() {
+      let minValue = Number(minRange.value);
+      let maxValue = Number(maxRange.value);
+      // Asegura que mínimo no pase a máximo
+      if (minValue > maxValue) {
+        const tmp = minValue;
+        minValue = maxValue;
+        maxValue = tmp;
+        minRange.value = minValue;
+        maxRange.value = maxValue;
+      }
+      const minPercent = ((minValue - MIN) / (MAX - MIN)) * 100;
+      const maxPercent = ((maxValue - MIN) / (MAX - MIN)) * 100;
+      priceMin.textContent = formatPrice(minValue);
+      priceMax.textContent = formatPrice(maxValue);
+      rangeSlider.style.setProperty('--min', `${minPercent}%`);
+      rangeSlider.style.setProperty('--max', `${maxPercent}%`);
+    }
+    function onInput() {
+      // Snap al step si el navegador no lo hace perfecto (opcional)
+      const minVal = Number(minRange.value);
+      const maxVal = Number(maxRange.value);
+      minRange.value = Math.round(minVal / STEP) * STEP;
+      maxRange.value = Math.round(maxVal / STEP) * STEP;
+      updateUI();
+    }
+    minRange.addEventListener('input', onInput);
+    maxRange.addEventListener('input', onInput);
+    updateUI();
+  </script>
 </body>
 </html>
